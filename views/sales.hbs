@@ -1,1 +1,23 @@
 <h2>Sales Page</h2>
+<section>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.orderID}}</td>
+                <td>{{this.orderDate}}</td>
+                <td>{{this.customerID}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

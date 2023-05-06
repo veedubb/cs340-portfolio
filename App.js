@@ -29,20 +29,33 @@ app.get('/customers', function(req, res)
     })
 });
 
-app.get('/products', function(req, res){
-    res.render('products')
+app.get('/products', function(req, res)
+{
+    let query1 = "SELECT * FROM Products;";
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('products', {data: rows})
+    })
 });
 
 app.get('/sales', function(req, res){
-    res.render('sales')
+    let query1 = "SELECT * FROM Sales;";
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('sales', {data: rows})
+    })
 });
 
 app.get('/suppliers', function(req, res){
-    res.render('suppliers')
+    let query1 = "SELECT * FROM Suppliers;";
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('suppliers', {data: rows})
+    })
 });
 
 app.get('/product-types', function(req, res){
-    res.render('product-types')
+    let query1 = "SELECT * FROM ProductTypes;";
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('product-types', {data: rows})
+    })
 });
 
 

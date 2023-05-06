@@ -1,1 +1,28 @@
 <h2>Products Page</h2>
+<section>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.productID}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.storeCost}}</td>
+                <td>{{this.salePrice}}</td>
+                <td>{{this.developer}}</td>
+                <td>{{this.publisher}}</td>
+                <td>{{this.productTypeID}}</td>
+                <td>{{this.supplierID}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

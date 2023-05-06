@@ -1,1 +1,29 @@
 <h2>Suppliers Page</h2>
+<section>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.supplierID}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.emailAddress}}</td>
+                <td>{{this.streetAddress}}</td>
+                <td>{{this.streetAddress2}}</td>
+                <td>{{this.city}}</td>
+                <td>{{this.state}}</td>
+                <td>{{this.zip}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

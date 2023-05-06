@@ -1,1 +1,23 @@
 <h2>Product Types Page</h2>
+<section>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.productTypeID}}</td>
+                <td>{{this.typeName}}</td>
+                <td>{{this.typeDescription}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
