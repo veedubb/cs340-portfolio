@@ -108,6 +108,7 @@
   /*  ----- Navigation ----- Override text links for navigation only.  */
   .navbar {
     overflow: hidden;
+    width: 100%;
     /* background-color: var(--purpledragondark10); */
   }
   
@@ -187,6 +188,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 25px;
     overflow: hidden;
+    max-width: 1000px;
 }
 
 thead tr {
