@@ -1,0 +1,31 @@
+<h2>Customers Page</h2>
+<h3>Test</h3>
+<section>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.customerID}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.streetAddress}}</td>
+                <td>{{this.streetAddress2}}</td>
+                <td>{{this.city}}</td>
+                <td>{{this.state}}</td>
+                <td>{{this.zip}}</td>
+                <td>{{this.emailAddress}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
