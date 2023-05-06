@@ -50,11 +50,11 @@
     font-family: 'Lora', serif;
     margin:0px;
     padding: 25px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     border-style: none;
     display: flex;
     align-items: center;
-    box-shadow: 0 0 25px var(--purpledragondark);
+    box-shadow: 0 0 15px var(--purpledragondark);
   }
 
   header * {
@@ -89,14 +89,16 @@
   div {}
   aside {}
   footer {
-    background-color:var(--greenback);
-    color:var(--eggshell);
+    background-color:var(--eggshell);
+    color:var(--purpledragon);
     font-family: 'Roboto', sans-serif;
-    margin-top:10px;
+    margin-top:20px;
     padding: 25px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     border-style: none;
     text-align: center;
+    font-size: 1.2em;
+    box-shadow: 0 0 15px var(--purpledragondark);
   }
   
   /* ----- Anchors ----- Text links */
@@ -181,8 +183,8 @@
   /*  ----- Table ----- */
   table {
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 20px;
+    margin: 0 auto;
+    font-size: .8em;
     font-family: 'Roboto', sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -223,57 +225,57 @@ tbody tr.active-row {
   
   
   /*  ----- Form ----- */
+
   form {}
-  fieldset {
+  .customer-form fieldset {
    border: 1px solid var(--purpledragon);    
    margin-top: 5px; 
    padding: 10px;  
   }
-    legend {
+    .customer-form legend {
       color: var(--purpledragondark);
       font-size: 20px;
     }
-  label {
+    .customer-form label {
     display:block;
     margin-top:3%;
   }
-    button {
+  .customer-form button {
       font-size:110%;
       padding:2%;
       font-family:inherit;
       background-color: var(--purpledragon);
       color: var(--eggshell);
     }
-    input {
+    .customer-form input {
       font-size:115%;
       padding:2%;
-      font-family:inherit;
+      font-family:'Roboto', sans-serif;
     }
-    input::placeholder {
+    .customer-form input::placeholder {
       color:var(--charcoal);
       font-size:80%;
   }
     output {}
     meter {}
     progress {}
-    select {
+    .customer-form select {
       font-size:110%;
       padding:1%;
-      font-family:inherit;
+      font-family:'Roboto', sans-serif;
     }
       optgroup {}
       option {}
-    textarea {
-      font-size:115%;
-      padding:2%;
-      font-family:inherit;
-      max-width: 600px;
-      min-width: 300px;
-      height: 200px;
-      border: solid;
+    .customer-form textarea {
+      display: block;
+      font: size 1em;
+      padding:10px;
+      font-family:'Roboto', sans-serif;
+      width: 100%;
+      border: 1px solid var(--purpledragondark);
     }
-    :focus{
-      background-color:var(--eggplant25);
+    .customer-form :focus{
+      background-color:var(--purpledragondark10);
   }
   *:required {
     border:2px solid green;
