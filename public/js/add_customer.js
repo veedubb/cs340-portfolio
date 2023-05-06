@@ -1,5 +1,4 @@
 let addCustomer = document.getElementById('add-customer-form');
-console.log(addCustomer)
 
 addCustomer.addEventListener("submit", function(e){
     // Prevent form from submitting
@@ -51,15 +50,15 @@ addCustomer.addEventListener("submit", function(e){
         if(xhttp.readyState == 4 && xhttp.status == 200){
             addRowToTable(xhttp.response)
 
-            inputFirstName  = '';
-            inputLastName   = '';
-            inputPhone      = '';
-            inputAddress1   = '';
-            inputAddress2   = '';
-            inputCity       = '';
-            inputState      = '';
-            inputZip        = '';
-            inputEmail      = '';
+            inputFirstName.value  = '';
+            inputLastName.value   = '';
+            inputPhone.value      = '';
+            inputAddress1.value   = '';
+            inputAddress2.value   = '';
+            inputCity.value       = '';
+            inputState.value      = '';
+            inputZip.value        = '';
+            inputEmail.value      = '';
         }
         else if(xhttp.readyState == 4 && xhttp.status != 200){
             console.log("There was an error with the input.")
@@ -71,51 +70,52 @@ addCustomer.addEventListener("submit", function(e){
 
 addRowToTable = (data) => {
     // Get table
-    let currTable = document.getElementById("add-customer-form");
-    console.log(currTable)
+    let currentTable = document.getElementById('customers-table');
+
     // Get index for new row
+    let newRowIndex = currentTable.rows.length;
 
     // Get DB information
     let parsedData = JSON.parse(data);
     let newRow = parsedData[parsedData.length - 1]
 
     // Create row and cells
-    let row           = document.createElement("tr");
-    let idCell        = document.createElement("td");
-    let phoneCell     = document.createElement("td");
-    let fNameCell     = document.createElement("td");
-    let lNameCell     = document.createElement("td");
-    let addr1Cell     = document.createElement("td");
-    let addr2Cell     = document.createElement("td");
-    let cityCell      = document.createElement("td");
-    let stateCell     = document.createElement("td");
-    let zipCell       = document.createElement("td");
-    let emailCell     = document.createElement("td");
+    let row           = document.createElement("TR");
+    let idCell        = document.createElement("TD");
+    let phoneCell     = document.createElement("TD");
+    let fNameCell     = document.createElement("TD");
+    let lNameCell     = document.createElement("TD");
+    let addr1Cell     = document.createElement("TD");
+    let addr2Cell     = document.createElement("TD");
+    let cityCell      = document.createElement("TD");
+    let stateCell     = document.createElement("TD");
+    let zipCell       = document.createElement("TD");
+    let emailCell     = document.createElement("TD");
 
     // Fill cells
-    idCell.innerText = newRow.id;
+    idCell.innerText    = newRow.customerID;
     phoneCell.innerText = newRow.phoneNumber;
     fNameCell.innerText = newRow.firstName;
     lNameCell.innerText = newRow.lastName;
     addr1Cell.innerText = newRow.streetAddress;
     addr2Cell.innerText = newRow.streetAddress2;
-    cityCell.innerText = newRow.city;
+    cityCell.innerText  = newRow.city;
     stateCell.innerText = newRow.state;
-    zipCell.innerText = newRow.zip;
+    zipCell.innerText   = newRow.zip;
     emailCell.innerText = newRow.emailAddress;
 
     // Append cells to current table
-    row.append(idCell);
-    row.append(phoneCell);
-    row.append(fNameCell);
-    row.append(lNameCell);
-    row.append(addr1Cell);
-    row.append(addr2Cell);
-    row.append(cityCell);
-    row.append(stateCell);
-    row.append(zipCell);
-    row.append(emailCell);
+    row.appendChild(idCell);
+    row.appendChild(fNameCell);
+    row.appendChild(lNameCell);
+    row.appendChild(phoneCell);
+    row.appendChild(addr1Cell);
+    row.appendChild(addr2Cell);
+    row.appendChild(cityCell);
+    row.appendChild(stateCell);
+    row.appendChild(zipCell);
+    row.appendChild(emailCell);
 
     // Add row to current table
-    currTable.appendChild(row);
+    currentTable.appendChild(row)
 }
