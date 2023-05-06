@@ -11,6 +11,9 @@ const exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static('public'))
 
 
 /*
@@ -73,16 +76,22 @@ app.get('/product-types', function(req, res){
 
 app.post('/add-customer', function(req, res){
     var data = req.body
+    console.log(data)
+    console.log(data.address2)
+    console.log(data.email)
+    console.log(typeof(data.address1))
+    console.log(typeof(data.address2))
+    console.log(typeof(data.email))
 
-    var addr2 = parseInt(data.address2)
-    if (addr2 === undefined){
-        addr2 = 'NULL'
+    if (!data.address2){
+        data.address2 = null
     }
 
-    var email = parseInt(data.email)
-    if (email === undefined){
-        email = 'NULL'
+    if (!data.email){
+        data.email = null
     }
+
+    console.log(data.email)
 
     query1 =    `INSERT INTO Customers(
                 firstName,
@@ -95,18 +104,9 @@ app.post('/add-customer', function(req, res){
                 zip,
                 emailAddress
             )
-            VALUES(
-                ${data.fname},
-                ${data.lname},
-                ${data.phone},
-                ${data.address1},
-                ${data.address2},
-                ${data.city},
-                ${data.state},
-                ${data.zip},
-                ${data.email}
-            );`
-    db.pool.query(query1, function(error, rows, fields){
+            VALUES
+            ('${data.fname}', '${data.lname}', ${data.phone}, '${data.address1}', ${data.address2}, '${data.city}', '${data.state}', ${data.zip}, ${data.email});`   
+            db.pool.query(query1, function(error, rows, fields){
         if (error){
             console.log(error);
             res.sendStatus(400);

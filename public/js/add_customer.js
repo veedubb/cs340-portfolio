@@ -1,48 +1,48 @@
-const addCustomer = document.getElementById('add-customer-form');
+let addCustomer = document.getElementById('add-customer-form');
+console.log(addCustomer)
 
 addCustomer.addEventListener("submit", function(e){
-    
     // Prevent form from submitting
     e.preventDefault();
 
     // Get all the form elements
-    const inputFirstName    = document.getElementById("");
-    const inputLastName     = document.getElementById("");
-    const inputPhone        = document.getElementById("");
-    const inputAddress1     = document.getElementById("");
-    const inputAddress2     = document.getElementById("");
-    const inputCity         = document.getElementById("");
-    const inputState        = document.getElementById("");
-    const inputZip          = document.getElementById("");
-    const inputEmail        = document.getElementById("");
+    let inputFirstName    = document.getElementById("input-fname");
+    let inputLastName     = document.getElementById("input-lname");
+    let inputPhone        = document.getElementById("input-phone");
+    let inputAddress1     = document.getElementById("input-address1");
+    let inputAddress2     = document.getElementById("input-address2");
+    let inputCity         = document.getElementById("input-city");
+    let inputState        = document.getElementById("input-state");
+    let inputZip          = document.getElementById("input-zip");
+    let inputEmail        = document.getElementById("input-email");
     
     // Get values from fields
-    const firstNameValue    = inputFirstName.value;
-    const lastNameValue     = inputLastName.value;
-    const phoneValue        = inputPhone.value;
-    const address1Value     = inputAddress1.value;
-    const address2Value     = inputAddress2.value;
-    const cityValue         = inputCity.value;
-    const stateValue        = inputState.value;
-    const zipValue          = inputZip.value;
-    const emailValue        = inputEmail.value;
-
+    let firstNameValue    = inputFirstName.value;
+    let lastNameValue     = inputLastName.value;
+    let phoneValue        = inputPhone.value;
+    let address1Value     = inputAddress1.value;
+    let address2Value     = inputAddress2.value;
+    let cityValue         = inputCity.value;
+    let stateValue        = inputState.value;
+    let zipValue          = inputZip.value;
+    let emailValue        = inputEmail.value;
 
     // Create JS Object
-    const data = {
-        fname               : firstNameValue,
-        lname               : lastNameValue,
-        phone               : phoneValue,
-        address1            : address1Value,
-        address2            : address2Value,
-        city                : cityValue,
-        state               : stateValue,
-        zip                 : zipValue,
-        email               : emailValue
+    let data = {
+            fname               : firstNameValue,
+            lname               : lastNameValue,
+            phone               : phoneValue,
+            address1            : address1Value,
+            address2            : address2Value,
+            city                : cityValue,
+            state               : stateValue,
+            zip                 : zipValue,
+            email               : emailValue
     }
-
+    console.log(data)
+    
     // Setup AJAX request
-    const xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-customer", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
@@ -71,27 +71,26 @@ addCustomer.addEventListener("submit", function(e){
 
 addRowToTable = (data) => {
     // Get table
-    const currTable = document.getElementById("add-customer-table");
-
+    let currTable = document.getElementById("add-customer-form");
+    console.log(currTable)
     // Get index for new row
-    const newRowIndex = currTable.rows.length;
 
     // Get DB information
-    const parsedData = JSON.parse(data);
-    const newRow = parsedData[parsedData.length - 1]
+    let parsedData = JSON.parse(data);
+    let newRow = parsedData[parsedData.length - 1]
 
     // Create row and cells
-    const row           = document.createElement("tr");
-    const idCell        = document.createElement("td");
-    const phoneCell     = document.createElement("td");
-    const fNameCell     = document.createElement("td");
-    const lNameCell     = document.createElement("td");
-    const addr1Cell     = document.createElement("td");
-    const addr2Cell     = document.createElement("td");
-    const cityCell      = document.createElement("td");
-    const stateCell     = document.createElement("td");
-    const zipCell       = document.createElement("td");
-    const emailCell     = document.createElement("td");
+    let row           = document.createElement("tr");
+    let idCell        = document.createElement("td");
+    let phoneCell     = document.createElement("td");
+    let fNameCell     = document.createElement("td");
+    let lNameCell     = document.createElement("td");
+    let addr1Cell     = document.createElement("td");
+    let addr2Cell     = document.createElement("td");
+    let cityCell      = document.createElement("td");
+    let stateCell     = document.createElement("td");
+    let zipCell       = document.createElement("td");
+    let emailCell     = document.createElement("td");
 
     // Fill cells
     idCell.innerText = newRow.id;
