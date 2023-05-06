@@ -75,6 +75,22 @@ app.get('/product-types', function(req, res){
     })
 });
 
+app.get('/sales-details', function(req, res){
+    let query1 =    `SELECT 		SalesDetails.saleDetailID, Sales.orderDate, Sales.orderID, Customers.firstName, Customers.lastName, Products.name AS productName, Products.salePrice, SalesDetails.qtyPurchased
+                    FROM 		SalesDetails
+                    INNER JOIN	Sales
+                    ON			SalesDetails.orderID = Sales.orderID
+                    INNER JOIN 	Customers
+                    ON 			Sales.customerID = Customers.customerID
+                    INNER JOIN 	Products
+                    ON			SalesDetails.productID = Products.productID
+                    ORDER BY 	Sales.orderID ASC;`
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('sales-details', {data: rows})
+    })
+    
+})
+
 app.post('/add-customer', function(req, res){
     var data = req.body
 

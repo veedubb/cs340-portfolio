@@ -1,0 +1,28 @@
+<h2>Item Sales Page</h2>
+<section>
+    <table id="products-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.saleDetailID}}</td>
+                <td>{{this.orderDate}}</td>
+                <td>{{this.orderID}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.productName}}</td>
+                <td>${{this.salePrice}}</td>
+                <td>{{this.qtyPurchased}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
