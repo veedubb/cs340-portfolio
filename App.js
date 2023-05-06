@@ -8,12 +8,13 @@ const PORT      = 2666;
 const db        = require('./database/db-connector')
 const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');
-app.engine('.hbs', engine({extname: ".hbs"}));
+app.engine('.hbs', engine({extname: ".hbs",}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
+
 
 
 /*
@@ -35,7 +36,7 @@ app.get('/customers', function(req, res)
 
 app.get('/products', function(req, res)
 {
-    let query1 =    `SELECT 		Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
+    let query1 =    `SELECT 	Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
                     FROM 		Products
                     INNER JOIN 	ProductTypes
                     ON			Products.productTypeID = ProductTypes.productTypeID
