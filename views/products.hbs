@@ -1,6 +1,6 @@
 <h2>Products Page</h2>
 <section>
-    <table>
+    <table id="products-table">
         <thead>
             <tr>
                 {{#each data.[0]}}
@@ -15,12 +15,12 @@
             <tr>
                 <td>{{this.productID}}</td>
                 <td>{{this.name}}</td>
-                <td>{{this.storeCost}}</td>
-                <td>{{this.salePrice}}</td>
+                <td>${{this.storeCost}}</td>
+                <td>${{this.salePrice}}</td>
                 <td>{{this.developer}}</td>
                 <td>{{this.publisher}}</td>
-                <td>{{this.productTypeID}}</td>
-                <td>{{this.supplierID}}</td>
+                <td>{{this.typeName}}</td>
+                <td>{{this.supplier}}</td>
             </tr>
             {{/each}}
         </tbody>

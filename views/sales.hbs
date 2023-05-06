@@ -1,6 +1,6 @@
 <h2>Sales Page</h2>
 <section>
-    <table>
+    <table id="sales-table">
         <thead>
             <tr>
                 {{#each data.[0]}}
@@ -16,6 +16,9 @@
                 <td>{{this.orderID}}</td>
                 <td>{{this.orderDate}}</td>
                 <td>{{this.customerID}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.phoneNumber}}</td>
             </tr>
             {{/each}}
         </tbody>
