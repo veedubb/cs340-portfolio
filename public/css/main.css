@@ -40,7 +40,7 @@
   
   /*  ----- Page layout blocks -----  */
   header {
-    background-color:var(--purpledragondark10);
+    background-color:var(--eggshell);
     position: fixed;
     top: 0;
     left: 0;
@@ -89,13 +89,14 @@
   div {}
   aside {}
   footer {
-    background-color:var(--dragonsblood);
+    background-color:var(--greenback);
     color:var(--eggshell);
     font-family: 'Roboto', sans-serif;
-    margin:0px;
+    margin-top:10px;
     padding: 25px;
     max-width: 1200px;
     border-style: none;
+    text-align: center;
   }
   
   /* ----- Anchors ----- Text links */
@@ -116,7 +117,7 @@
   .navbar a {
     float: left;
     display: block;
-    color: var(--purpledragonlight);
+    color: var(--purpledragon);
     font-family: 'Lora', serif;
     font-weight: bold;
     text-align: center;
@@ -142,10 +143,10 @@
   dd {}
   
   h1, h2, h3, h4, h5, h6 {} 
-  h1 {color:var(--purpledragon);
+  h1 {color:var(--purpledragonlight);
   text-align:center;
   font-weight:bold;
-  font-size: 50px;
+  font-size: 40px;
 }
   h2 {color:var(--greenback);}
   h3 {color:var(--purpledragonlight);}
@@ -188,7 +189,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 25px;
     overflow: hidden;
-    max-width: 1000px;
+    max-width: 700px;
 }
 
 thead tr {
