@@ -10,6 +10,7 @@ const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');
+app.use(express.static(__dirname + '/public'));
 
 
 /*
