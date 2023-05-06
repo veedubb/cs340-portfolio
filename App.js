@@ -76,12 +76,6 @@ app.get('/product-types', function(req, res){
 
 app.post('/add-customer', function(req, res){
     var data = req.body
-    console.log(data)
-    console.log(data.address2)
-    console.log(data.email)
-    console.log(typeof(data.address1))
-    console.log(typeof(data.address2))
-    console.log(typeof(data.email))
 
     if (!data.address2){
         data.address2 = null
@@ -90,8 +84,6 @@ app.post('/add-customer', function(req, res){
     if (!data.email){
         data.email = null
     }
-
-    console.log(data.email)
 
     query1 =    `INSERT INTO Customers(
                 firstName,
@@ -126,7 +118,7 @@ app.post('/add-customer', function(req, res){
     })
 
 
-})
+});
 
 
 /*
