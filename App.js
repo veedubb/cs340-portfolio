@@ -8,12 +8,13 @@ const PORT      = 2666;
 const db        = require('./database/db-connector')
 const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');
-app.engine('.hbs', engine({extname: ".hbs"}));
+app.engine('.hbs', engine({extname: ".hbs",}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
+
 
 
 /*
@@ -35,7 +36,7 @@ app.get('/customers', function(req, res)
 
 app.get('/products', function(req, res)
 {
-    let query1 =    `SELECT 		Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
+    let query1 =    `SELECT 	Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
                     FROM 		Products
                     INNER JOIN 	ProductTypes
                     ON			Products.productTypeID = ProductTypes.productTypeID
@@ -73,6 +74,22 @@ app.get('/product-types', function(req, res){
         res.render('product-types', {data: rows})
     })
 });
+
+app.get('/sales-details', function(req, res){
+    let query1 =    `SELECT 		SalesDetails.saleDetailID, Sales.orderDate, Sales.orderID, Customers.firstName, Customers.lastName, Products.name AS productName, Products.salePrice, SalesDetails.qtyPurchased
+                    FROM 		SalesDetails
+                    INNER JOIN	Sales
+                    ON			SalesDetails.orderID = Sales.orderID
+                    INNER JOIN 	Customers
+                    ON 			Sales.customerID = Customers.customerID
+                    INNER JOIN 	Products
+                    ON			SalesDetails.productID = Products.productID
+                    ORDER BY 	Sales.orderID ASC;`
+    db.pool.query(query1, function(error, rows, fields){
+        res.render('sales-details', {data: rows})
+    })
+    
+})
 
 app.post('/add-customer', function(req, res){
     var data = req.body
