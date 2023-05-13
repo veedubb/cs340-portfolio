@@ -31,10 +31,8 @@
   body {       /* Can alternatively define in html {} or :root {} */
     color:var(--charcoal);
     font-family: 'Roboto', sans-serif; /* Define with at least one font name and its related generic family name.*/
-    margin-top: 150px;
-    /* margin:0 auto; */
+    margin-top: 3rem;
     padding:0;
-    /* max-width: 1100px; */
     min-width: 700px;
   }
   
@@ -48,9 +46,8 @@
     height: 80px; 
     color:var(--purpledragon);
     font-family: 'Lora', serif;
-    margin:0px;
+    margin-bottom: 3rem;
     padding: 25px;
-    /* max-width: 1200px; */
     border-style: none;
     display: flex;
     align-items: center;
@@ -62,6 +59,10 @@
 
   header li {
     margin: 20px;
+  }
+
+  .navhead {
+    margin-bottom: 5rem;
   }
 
 
@@ -83,7 +84,9 @@
     border-style: none;
   }
   section {}
-    article {}
+    article {
+      margin: 20px;
+    }
       #topic1 {}
       #topic2 {}
   div {}
@@ -92,7 +95,7 @@
     background-color:var(--eggshell);
     color:var(--purpledragon);
     font-family: 'Roboto', sans-serif;
-    margin-top:20px;
+    margin-top:3rem;
     padding: 25px;
     /* max-width: 1200px; */
     border-style: none;
@@ -226,57 +229,32 @@ tbody tr.active-row {
   
   /*  ----- Form ----- */
 
-  form {}
-  .customer-form fieldset {
-   border: 1px solid var(--purpledragon);    
-   margin-top: 5px; 
-   padding: 10px;  
+  form {
+    width: 100%;
+    max-width: 32rem; 
+    margin: 1rem;
+    padding: 1rem;
+    display: grid;
+    background-color:var(--charcoal10); 
+    border-radius: 0.5rem;
   }
-    .customer-form legend {
-      color: var(--purpledragondark);
-      font-size: 20px;
-    }
-    .customer-form label {
-    display:block;
-    margin-top:3%;
+
+  input,
+button {
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+  label {
+    font-family: "Lora", serif;
+    color: var(--purpledragon);
+    font-size: 16px;
+    font-weight: bold; 
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
   }
-  .customer-form button {
-      font-size:110%;
-      padding:2%;
-      font-family:inherit;
-      background-color: var(--purpledragon);
-      color: var(--eggshell);
-    }
-    .customer-form input {
-      font-size:115%;
-      padding:2%;
-      font-family:'Roboto', sans-serif;
-    }
-    .customer-form input::placeholder {
-      color:var(--charcoal);
-      font-size:80%;
-  }
-    output {}
-    meter {}
-    progress {}
-    .customer-form select {
-      font-size:110%;
-      padding:1%;
-      font-family:'Roboto', sans-serif;
-    }
-      optgroup {}
-      option {}
-    .customer-form textarea {
-      display: block;
-      font: size 1em;
-      padding:10px;
-      font-family:'Roboto', sans-serif;
-      width: 100%;
-      border: 1px solid var(--purpledragondark);
-    }
-    .customer-form :focus{
-      background-color:var(--purpledragondark10);
-  }
+  
   *:required {
     border:2px solid green;
 }
@@ -285,6 +263,48 @@ label.required:after {
   content:" *";
   color:red;
 }
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--toothandnail);
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border-color: var(--greenback);
+}
+
+textarea:focus {
+  border-color: var(--dragonsblood);
+}
+
+.frm-button {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--greenback);
+  color: var(--eggshell);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  max-width: 10rem;
+  transition: background-color 0.2s ease;
+  } 
+
+  .frm-button:hover {
+    background-color: var(--purpledragon);
+    color: var(--eggshell);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--purpledragon);
+  }
+
   
   /* ----- Media ----- */
   figure {

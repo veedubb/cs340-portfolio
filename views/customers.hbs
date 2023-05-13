@@ -1,5 +1,6 @@
-<h2>Customers Page</h2>
+<article><h2>Customers Page</h2>
 <h3>Test</h3>
+</article>
 <section>
     <table id="customers-table">
         <thead>
@@ -28,8 +29,10 @@
             {{/each}}
         </tbody>
     </table>
+    <article>
     <h2>Add a New Customer</h2>
     <p>Enter the Customer Information below and hit submit to add a new Customer</p>
+    </article>
     <form class="customer-form" id="add-customer-form">
         <label for="input-fname">First Name:</label>
         <input type="text" name="input-fname" id="input-fname">
@@ -58,7 +61,7 @@
         <label for="input-email">Email Address:</label>
         <input type="email" name="input-email" id="input-email">
 
-        <input type="submit" value="Add Customer" />
+        <input class="frm-button" type="submit" value="Add Customer" />
     </form>
 </section>
 <script src='./js/add_customer.js' type="application/javascript"></script>
