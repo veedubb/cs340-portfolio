@@ -26,4 +26,31 @@
             {{/each}}
         </tbody>
     </table>
+    <h3>Add a Supplier:</h3>
+    <form class="suppliers-form" id="add-supplier-form">
+        <label for="input-name">Name:</label>
+        <input type="text" name="input-name" id="input-name" required>
+
+        <label for="input-phone">Phone Number:</label>
+        <input type="number" name="input-phone" id="input-phone" required>
+
+        <label for="input-email">Email Address:</label>
+        <input type="email" name="input-email" id="input-email" required>
+
+        <label for="input-address1">Street Address (Line 1):</label>
+        <input type="text" name="input-address1" id="input-address1" >
+
+        <label for="input-address2">Street Address (Line 2)</label>
+        <input type="text" name="input-address2" id="input-address2">
+        
+        <label for="input-productType">City:</label>
+        <input type="text" name="input-productType" id="input-productType">
+        
+        <label for="input-supplier">State:</label>
+        <input type="text" name="input-supplier" id="input-supplier" maxlength="2" required>
+
+        <label for="input-zip">ZIP:</label>
+        <input type="number" name="input-zip" id="input-zip">
+
+        <input type="submit" value="Add Supplier" />
 </section>

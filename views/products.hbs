@@ -19,10 +19,35 @@
                 <td>${{this.salePrice}}</td>
                 <td>{{this.developer}}</td>
                 <td>{{this.publisher}}</td>
-                <td>{{this.typeName}}</td>
+                <td>{{this.productTypeID}}</td>
                 <td>{{this.supplier}}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+    <h3>Add a Product:</h3>
+    <form class="products-form" id="add-product-form">
+        <label for="input-name">Name:</label>
+        <input type="text" name="input-name" id="input-name" required>
+
+        <label for="input-storeCost">Store Cost:</label>
+        <input type="number" name="input-storeCost" id="input-storeCost" required>
+
+        <label for="input-salePrice">Sale Price:</label>
+        <input type="number" name="input-salePrice" id="input-salePrice" required>
+
+        <label for="input-developer">Developer:</label>
+        <input type="text" name="input-developer" id="input-developer" >
+
+        <label for="input-publisher">Publisher:</label>
+        <input type="text" name="input-publisher" id="input-publisher">
+        
+        <label for="input-productType">Product Type:</label>
+        <input type="text" name="input-productType" id="input-productType">
+        
+        <label for="input-supplier">Supplier:</label>
+        <input type="text" name="input-supplier" id="input-supplier" maxlength="2" required>
+
+        <input type="submit" value="Add Product" />
+    </form>
 </section>
