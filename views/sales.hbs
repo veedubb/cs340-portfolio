@@ -12,7 +12,8 @@
         </thead>
         <tbody>
             {{#each data}}
-            <tr>
+            <tr data-value={{this.orderID}}>
+                <td><button onclick="deleteSale({{this.orderID}})">Delete</button></td>
                 <td>{{this.orderID}}</td>
                 <td>{{this.orderDate}}</td>
                 <td>{{this.firstName}}</td>
@@ -22,6 +23,9 @@
             {{/each}}
         </tbody>
     </table>
+
+    <script src="./js/delete_sale.js"></script>
+
     <h3>Add an Order:</h3>
     <form class="sales-form" id="add-sales-form">
         <label for="input-name">Date:</label>

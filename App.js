@@ -21,11 +21,17 @@ app.use(express.static('public'))
     ROUTES
 */
 
+/*
+    GET HOMEPAGE
+*/
 app.get('/', function(req, res)
     {
         res.render('index');
     });
 
+/*
+    GET CUSTOMERS PAGE
+*/
 app.get('/customers', function(req, res)
     {
         let query1 = "SELECT * FROM Customers;";
@@ -34,6 +40,9 @@ app.get('/customers', function(req, res)
     })
 });
 
+/*
+    GET PRODUCTS PAGE
+*/
 app.get('/products', function(req, res)
 {
     let query1 =    `SELECT 	Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
@@ -49,6 +58,9 @@ app.get('/products', function(req, res)
     })
 });
 
+/*
+    GET SALES PAGE
+*/
 app.get('/sales', function(req, res){
     let query1 =    `SELECT Sales.orderID, Sales.orderDate, Customers.firstName, Customers.lastName, Customers.phoneNumber 
                     FROM Sales 
@@ -61,6 +73,9 @@ app.get('/sales', function(req, res){
     })
 });
 
+/*
+    GET SUPPLIERS PAGE
+*/
 app.get('/suppliers', function(req, res){
     let query1 = "SELECT * FROM Suppliers;";
     db.pool.query(query1, function(error, rows, fields){
@@ -68,6 +83,9 @@ app.get('/suppliers', function(req, res){
     })
 });
 
+/*
+    GET PRODUCT TYPES PAGE
+*/
 app.get('/product-types', function(req, res){
     let query1 = "SELECT * FROM ProductTypes;";
     db.pool.query(query1, function(error, rows, fields){
@@ -75,6 +93,9 @@ app.get('/product-types', function(req, res){
     })
 });
 
+/*
+    GET SALES DETAILS PAGE
+*/
 app.get('/sales-details', function(req, res){
     let query1 =    `SELECT 		SalesDetails.saleDetailID, Sales.orderDate, Sales.orderID, Customers.firstName, Customers.lastName, Products.name AS productName, Products.salePrice, SalesDetails.qtyPurchased
                     FROM 		SalesDetails
@@ -91,6 +112,10 @@ app.get('/sales-details', function(req, res){
     
 })
 
+/*
+    POST TO CUSTOMERS PAGE
+    Adding new customers
+*/
 app.post('/add-customer', function(req, res){
     var data = req.body
 
@@ -136,6 +161,70 @@ app.post('/add-customer', function(req, res){
 
 
 });
+
+/*
+    POST SALES PAGE
+    Add a Sale
+*/
+
+
+/*
+    POST PRODUCTS PAGE
+    Add a Product
+*/
+
+
+/*
+    POST SALES DETAILS PAGE
+    Add line item to Sale
+*/
+
+
+/*
+    POST SUPPLIERS PAGE
+    Add a Supplier
+*/
+
+/*
+    POST PRODUCT TYPES PAGE
+    Add a Product Type
+*/
+
+/*
+    DELETE SALES PAGE
+    Refund a Sale
+*/
+app.delete('/delete-sale', function(req, res, next){
+    let data = req.body;
+    let salesId = parseInt(data.id);
+    console.log(data)
+    let deleteSalesDetails  = `DELETE FROM SalesDetails WHERE orderID = ?`;
+    let deleteSales = `DELETE FROM Sales WHERE orderID = ?`;
+
+    db.pool.query(deleteSalesDetails, [salesId], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else {
+            db.pool.query(deleteSales, [salesId], function(error, rows, fields){
+                if(error){
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else{
+                    res.sendStatus(204)
+                }
+            })
+        }
+    })
+
+}) 
+
+/*
+    
+    Update a Product
+*/
 
 
 /*
