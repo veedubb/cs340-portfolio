@@ -29,14 +29,16 @@
     <form class="sales-details-form" id="add-sales-details-form">
         <label for="input-order">Order:</label>
         <select name="input-order" id="input-order" required>
-            <option value="Test">TEST</option>
-
+            {{#each sales}}
+            <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.lastName}}</option>
+            {{/each}}
         </select>
 
-        <label for="input-product">Customer:</label>
+        <label for="input-product">Product:</label>
         <select name="input-product" id="input-product" required>
-            <option value="Test">TEST</option>
-
+            {{#each products}}
+            <option value="{{this.productId}}">{{this.name}}</option>
+            {{/each}}
         </select>
 
         <label for="input-qty">Quantity:</label>

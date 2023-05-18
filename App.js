@@ -105,9 +105,23 @@ app.get('/sales-details', function(req, res){
                     ON 			Sales.customerID = Customers.customerID
                     INNER JOIN 	Products
                     ON			SalesDetails.productID = Products.productID
-                    ORDER BY 	Sales.orderID ASC;`
+                    ORDER BY 	Sales.orderID ASC;`;
+    let query2 =    `SELECT *
+                    FROM Products;`;
+    let query3 =    `SELECT Sales.orderID, Sales.orderDate, Customers.lastName
+                    FROM Sales
+                    INNER JOIN Customers
+                    ON Sales.customerID = Customers.customerID;`
     db.pool.query(query1, function(error, rows, fields){
-        res.render('sales-details', {data: rows})
+        let details = rows;
+        db.pool.query(query2, (error, rows, fields) => {
+            let products = rows;
+            db.pool.query(query3, (error, rows, fields) => {
+                let orders = rows;
+                console.log(orders)
+                return res.render('sales-details', {data: details, products: products, sales: orders})
+            })
+        })
     })
     
 })
