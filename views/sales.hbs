@@ -3,6 +3,7 @@
     <table id="sales-table">
         <thead>
             <tr>
+                <th></th>
                 {{#each data.[0]}}
                 <th>
                     {{@key}}
@@ -27,13 +28,15 @@
     <script src="./js/delete_sale.js"></script>
 
     <h3>Add an Order:</h3>
-    <form class="sales-form" id="add-sales-form">
+    <form class="add-sales-form" id="add-sales-form">
         <label for="input-name">Date:</label>
         <input type="date" name="input-date" id="input-date" required>
 
         <label for="input-customer">Customer:</label>
-        <select name="input-customer" id="input-customer">
-            <option value="Test">Test</option>
+        <select name="input-customer" id="input-customer" required>
+            {{#each people}}
+            <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}} - {{this.phoneNumber}}</option>
+            {{/each}}
         </select>
 
         <input type="submit" value="Add Sales" />

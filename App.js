@@ -67,9 +67,15 @@ app.get('/sales', function(req, res){
                     INNER JOIN Customers 
                     ON Sales.customerID = Customers.customerID 
                     ORDER BY Sales.orderDate DESC;`;
+    let query2 =    `SELECT customerID, firstName, lastName, phoneNumber
+                    FROM Customers`
     db.pool.query(query1, function(error, rows, fields){
-        res.render('sales', {data: rows})
-        console.log(rows)
+        let sales = rows
+        db.pool.query(query2, (error, rows, fields) =>{
+            let customers = rows
+            console.log(customers)
+            return res.render('sales', {data: sales, people: customers})
+        })
     })
 });
 
