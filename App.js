@@ -97,7 +97,7 @@ app.get('/product-types', function(req, res){
     GET SALES DETAILS PAGE
 */
 app.get('/sales-details', function(req, res){
-    let query1 =    `SELECT 		SalesDetails.saleDetailID, Sales.orderDate, Sales.orderID, Customers.firstName, Customers.lastName, Products.name AS productName, Products.salePrice, SalesDetails.qtyPurchased
+    let query1 =    `SELECT SalesDetails.saleDetailID, Sales.orderDate, Sales.orderID, Customers.firstName, Customers.lastName, Products.name AS productName, Products.salePrice, SalesDetails.qtyPurchased
                     FROM 		SalesDetails
                     INNER JOIN	Sales
                     ON			SalesDetails.orderID = Sales.orderID
@@ -160,7 +160,7 @@ app.post('/add-customer', function(req, res){
             res.sendStatus(400);
         }
         else {
-            query2 = "SELECT * FROM Customers;";
+            query2 = "SELECT * FROM Customers";
             db.pool.query(query2, function(error, rows, fields){
                 if(error){
                     console.log(error);
@@ -192,7 +192,36 @@ app.post('/add-customer', function(req, res){
     POST SALES DETAILS PAGE
     Add line item to Sale
 */
+app.post('/add-sales-details', function(req, res){
+    var data = req.body
 
+    if (!data.address2){
+        data.address2 = null
+    }
+
+    if (!data.email){
+        data.email = null
+    }
+
+    query1 =    `INSERT INTO SalesDetails(
+                orderID,
+                productID,
+                qtyPurchased
+            )
+            VALUES
+            ('${data.order}', '${data.product}', ${data.qty});`   
+            db.pool.query(query1, function(error, rows, fields){
+        if (error){
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else {
+            res.redirect('/sales-details')
+        }
+    })
+
+
+});
 
 /*
     POST SUPPLIERS PAGE

@@ -1,6 +1,6 @@
 <h2>Item Sales Page</h2>
 <section>
-    <table id="products-table">
+    <table id="sales-details-table">
         <thead>
             <tr>
                 {{#each data.[0]}}
@@ -26,7 +26,7 @@
         </tbody>
     </table>
     <h3>Add a Transaction to Order:</h3>
-    <form class="sales-details-form" id="add-sales-details-form">
+    <form class="add-sales-details-form" id="add-sales-details-form">
         <label for="input-order">Order:</label>
         <select name="input-order" id="input-order" required>
             {{#each sales}}
@@ -37,7 +37,7 @@
         <label for="input-product">Product:</label>
         <select name="input-product" id="input-product" required>
             {{#each products}}
-            <option value="{{this.productId}}">{{this.name}}</option>
+            <option value="{{this.productID}}">{{this.name}}</option>
             {{/each}}
         </select>
 
@@ -46,4 +46,5 @@
 
         <input type="submit" value="Add Product" />
     </form>
+    <script src="./js/add_sales_details.js"></script>
 </section>
