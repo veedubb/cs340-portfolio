@@ -421,7 +421,16 @@ input[type=submit] {
   @keyframes App-logo {}
   
   /*   ===== TABLET  media query overrides mobile styles ===== */
-  @media all and (min-width: 600px) {}
+  @media all and (max-width: 800px) {
+    header { 
+      max-width: 600px;
+      padding-bottom: 125px;
+      padding-top: 50px;
+    }
+    form {
+      max-width: 340px;
+    }
+  }
   
   /*   ===== DESKTOP  media query overrides mobile and tablet styles ===== */
   @media all and (min-width: 1080px) {}
