@@ -22,7 +22,9 @@
     --dragonsblood: rgba(197, 74, 80, 1);
     --greenback: rgba(0, 200, 150, 1);
     --toothandnail: rgba(131, 114, 127, 1);
+    --toothandnail75: rgba(131, 114, 127, .65);
     --charcoal: rgba(51, 51, 51, 1);
+    --charcoal50: rgba(51, 51, 51, .5);
     --charcoal10: rgba(51, 51, 51, .10);
     --eggshell: rgba(253, 253, 253, 1);
   }
@@ -52,6 +54,12 @@
     display: flex;
     align-items: center;
     box-shadow: 0 0 15px var(--purpledragondark);
+    z-index: 999;
+    transition: transform 0.3s ease;
+  }
+
+  header.mobile {
+    transform: translateY(-100%);
   }
 
   header * {
@@ -127,15 +135,38 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    border-radius: 10px; 
+    border-radius: 15px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   /* Change the color of links on hover */
   .navbar a:hover {
     background-color: var(--purpledragon);
     color: var(--eggshell);
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 0 20px var(--purpledragon);
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      text-align: center;
+    }
+
+    .navbar a {
+      float: none;
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    header.mobile {
+      transform: translateY(0);
+    }
+
+    .navbar.mobile {
+      transform: translateY(0);
+    }
   }
 
   /*  -----  Typography  ----- */
@@ -152,8 +183,10 @@
   font-weight:bold;
   font-size: 40px;
 }
-  h2 {color:var(--greenback);}
-  h3 {color:var(--purpledragonlight);}
+  h2 {color:var(--greenback);
+  margin-top: 3rem;}
+  h3 {color:var(--purpledragonlight);
+    margin-top: 3rem;}
   h4 {}
   h5 {}
   h6 {}
@@ -191,7 +224,7 @@
     font-family: 'Roboto', sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    border-radius: 25px;
+    border-radius: 15px;
     overflow: hidden;
     max-width: 1000px;
 }
@@ -229,63 +262,73 @@ tbody tr.active-row {
   
   /*  ----- Form ----- */
 
+  input:focus {
+    border: 3px solid var(--greenback);
+  }
+
   form {
-    width: 100%;
-    max-width: 32rem; 
-    margin: 1rem;
-    padding: 1rem;
-    display: grid;
-    background-color:var(--charcoal10); 
-    border-radius: 0.5rem;
+    background-color:var(--toothandnail75);
+    padding: 3rem;
+    max-width: 500px;
+    border-radius: 15px;
+    margin-top: 3rem;
+
   }
 
-  input,
-button {
-  padding: 0.5rem;
-  font-family: inherit;
-  font-size: inherit;
+input{
+  margin: 1rem;
+  padding: 1rem;
+  border: var(--greenback);
+  box-shadow:rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  width: 90%;
+  font-family: 'Roboto', sans-serif;
+
 }
 
-  label {
-    font-family: "Lora", serif;
-    color: var(--purpledragon);
-    font-size: 16px;
-    font-weight: bold; 
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  *:required {
-    border:2px solid green;
+label {
+  font-size: 1rem;
+  color: var(--eggshell);
+  font-family: 'Lora', serif;
+  font-weight: bold;
+
 }
 
-label.required:after {
-  content:" *";
-  color:red;
+select {
+  font-size: 1rem;
+  color: var(--eggshell);
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  padding-right: 40px;
+  padding-left: 40px;
+  border-radius: 15px;
+
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: var(--toothandnail);
+select a {
+  font-size: 1rem;
+  color: var(--eggshell);
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  padding-right: 40px;
+  padding-left: 40px;
+  border-radius: 15px;
+  background-color: var(--greenback);
+
 }
 
-input,
-textarea {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  border-color: var(--greenback);
-}
 
-textarea:focus {
-  border-color: var(--dragonsblood);
+::placeholder {
+  color: var(--charcoal50);
+  font-size: .9rem;
+  font-family: 'Roboto', sans-serif;
 }
-
-.frm-button {
+input[type=submit] {
+  font-family: 'Lora', serif;
   display: block;
   margin: 1rem auto;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 15px;
   background-color: var(--greenback);
   color: var(--eggshell);
   font-size: 16px;
@@ -298,11 +341,11 @@ textarea:focus {
   transition: background-color 0.2s ease;
   } 
 
-  .frm-button:hover {
-    background-color: var(--purpledragon);
+  input[type=submit]:hover {
+    background-color: var(--purpledragonlight);
     color: var(--eggshell);
-    border-radius: 10px;
-    box-shadow: 0 0 20px var(--purpledragon);
+    border-radius: 15px;
+    box-shadow: 0 0 20px var(--purpledragonlight);
   }
 
   
