@@ -27,7 +27,7 @@
         </tbody>
     </table>
     <h3>Add a Supplier:</h3>
-    <form class="suppliers-form" id="add-supplier-form">
+    <form class="suppliers-form" id="add-supplier-form" method="POST" action="add-supplier">
         <label for="input-name">Name:</label>
         <input type="text" name="input-name" id="input-name" required>
 
@@ -43,11 +43,11 @@
         <label for="input-address2">Street Address (Line 2)</label>
         <input type="text" name="input-address2" id="input-address2">
         
-        <label for="input-productType">City:</label>
-        <input type="text" name="input-productType" id="input-productType">
+        <label for="input-city">City:</label>
+        <input type="text" name="input-city" id="input-city">
         
-        <label for="input-supplier">State:</label>
-        <input type="text" name="input-supplier" id="input-supplier" maxlength="2" required>
+        <label for="input-state">State:</label>
+        <input type="text" name="input-state" id="input-state" maxlength="2" required>
 
         <label for="input-zip">ZIP:</label>
         <input type="number" name="input-zip" id="input-zip">
