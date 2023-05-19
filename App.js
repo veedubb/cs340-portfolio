@@ -45,16 +45,23 @@ app.get('/customers', function(req, res)
 */
 app.get('/products', function(req, res)
 {
-    let query1 =    `SELECT 	Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, ProductTypes.typeName, Suppliers.name AS supplier
+    let query1 =    `SELECT 	Products.productID, Products.name, Products.storeCost, Products.salePrice, Products.developer, Products.publisher, Suppliers.name AS supplier
                     FROM 		Products
-                    INNER JOIN 	ProductTypes
-                    ON			Products.productTypeID = ProductTypes.productTypeID
                     INNER JOIN	Suppliers
                     ON			Products.supplierID = Suppliers.supplierID
                     ORDER BY	Products.name ASC;`;
+    let query2 =    `SELECT * FROM ProductTypes`
+    let query3 =    `SELECT * FROM Suppliers`
     db.pool.query(query1, function(error, rows, fields){
-        res.render('products', {data: rows})
-        console.log(rows)
+        let products = rows
+        db.pool.query(query2, (error, rows, fields) => {
+            let productTypes = rows
+            db.pool.query(query3, (error, rows, fields) =>{
+                let suppliers = rows
+                res.render('products', {data: products, types: productTypes, suppliers: suppliers})
+                console.log(rows)
+            })
+        })
     })
 });
 
@@ -186,12 +193,72 @@ app.post('/add-customer', function(req, res){
     POST SALES PAGE
     Add a Sale
 */
+app.post('/add-sales', function(req, res){
+    let data = req.body
+    console.log(data)
 
+    let query1 =    `INSERT INTO Sales(
+                    orderDate,
+                    customerID
+                    )
+                    VALUES('${data['input-date']}', '${data['input-customer']}');`
+    db.pool.query(query1, function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else{
+            res.redirect('/sales')
+        }
+    })
+})
 
 /*
     POST PRODUCTS PAGE
     Add a Product
 */
+app.post('/add-product', function(req, res){
+    let data = req.body
+    if (!data['input-developer']){
+        data['input-developer'] = null
+    }
+
+    if (!data['input-publisher']){
+        data['input-publisher'] = null
+    }
+
+    if(!data['input-productType']){
+        data['input-productType'] = null
+    }
+    console.log(data)
+    let richardButtkiss =   `INSERT INTO Products(
+                                name,
+                                storeCost,
+                                salePrice,
+                                developer,
+                                publisher,
+                                productTypeID,
+                                supplierID
+                            )
+                            VALUES(
+                                '${data['input-name']}',
+                                ${data['input-storeCost']},
+                                ${data['input-salePrice']},
+                                ${data['input-developer']},
+                                ${data['input-publisher']},
+                                ${data['input-productType']},
+                                ${data['input-supplier']}
+                            );`
+    db.pool.query(richardButtkiss, function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400)
+        }
+        else{
+            res.redirect('/products')
+        }
+    })
+})
 
 
 /*
@@ -199,23 +266,16 @@ app.post('/add-customer', function(req, res){
     Add line item to Sale
 */
 app.post('/add-sales-details', function(req, res){
-    var data = req.body
+    let data = req.body
+    console.log(data)
 
-    if (!data.address2){
-        data.address2 = null
-    }
-
-    if (!data.email){
-        data.email = null
-    }
-
-    query1 =    `INSERT INTO SalesDetails(
-                orderID,
-                productID,
-                qtyPurchased
+    let query1 =    `INSERT INTO SalesDetails(
+                    orderID,
+                    productID,
+                    qtyPurchased
             )
             VALUES
-            ('${data.order}', '${data.product}', ${data.qty});`   
+            ('${data['input-order']}', '${data['input-product']}', ${data['input-qty']});`   
             db.pool.query(query1, function(error, rows, fields){
         if (error){
             console.log(error);

@@ -21,22 +21,21 @@
                 <td>${{this.salePrice}}</td>
                 <td>{{this.developer}}</td>
                 <td>{{this.publisher}}</td>
-                <td>{{this.productTypeID}}</td>
                 <td>{{this.supplier}}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
     <h3>Add a Product:</h3>
-    <form class="products-form" id="add-product-form">
+    <form class="products-form" id="add-product-form" method="POST" action="/add-product">
         <label for="input-name">Name:</label>
         <input type="text" name="input-name" id="input-name" required>
 
         <label for="input-storeCost">Store Cost:</label>
-        <input type="number" name="input-storeCost" id="input-storeCost" required>
+        <input type="number" name="input-storeCost" id="input-storeCost" step=".01" required>
 
         <label for="input-salePrice">Sale Price:</label>
-        <input type="number" name="input-salePrice" id="input-salePrice" required>
+        <input type="number" name="input-salePrice" id="input-salePrice" step=".01" required>
 
         <label for="input-developer">Developer:</label>
         <input type="text" name="input-developer" id="input-developer" >
@@ -45,10 +44,19 @@
         <input type="text" name="input-publisher" id="input-publisher">
         
         <label for="input-productType">Product Type:</label>
-        <input type="text" name="input-productType" id="input-productType">
+        <select name="input-productType" id="input-productType">
+            <option value="">None</option>
+            {{#each types}}
+            <option value="{{this.productTypeID}}">{{this.typeName}}</option>
+            {{/each}}
+        </select>
         
         <label for="input-supplier">Supplier:</label>
-        <input type="text" name="input-supplier" id="input-supplier" maxlength="2" required>
+        <select name="input-supplier" id="input-supplier" required>
+            {{#each suppliers}}
+            <option value="{{this.supplierID}}">{{this.name}}</option>
+            {{/each}}
+        </select>
 
         <input type="submit" value="Add Product" />
     </form>

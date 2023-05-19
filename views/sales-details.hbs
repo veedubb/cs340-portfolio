@@ -26,7 +26,7 @@
         </tbody>
     </table>
     <h3>Add a Transaction to Order:</h3>
-    <form class="add-sales-details-form" id="add-sales-details-form">
+    <form id="add-sales-details-form" method="POST" action="/add-sales-details">
         <label for="input-order">Order:</label>
         <select name="input-order" id="input-order" required>
             {{#each sales}}
@@ -46,5 +46,4 @@
 
         <input type="submit" value="Add Product" />
     </form>
-    <script src="./js/add_sales_details.js"></script>
 </section>
