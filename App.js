@@ -429,6 +429,37 @@ app.put('/put-order', function(req, res, next){
     })
 })
 
+app.put('/update-date', function(req, res, next){
+    let data = req.body
+    console.log(data)
+
+    let order = data.order
+    let date = data.date
+
+    let query1 = `UPDATE Sales SET orderDate = ? WHERE Sales.orderID = ?`
+    let query2 = `SELECT * FROM Sales WHERE orderDate = ?`
+
+    db.pool.query(query1, [date, order], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400)
+        }
+        else{
+            db.pool.query(query2, [date], function(error, rows, fields){
+                if(error){
+                    console.log('Query 1 Successful.')
+                    console.log(error)
+                    res.sendStatus(400)
+                }
+                else{
+                    console.log('Query 2 successful.')
+                    res.send(rows)
+                }
+        })
+        }
+    })
+})
+
 /*
     LISTENER
 */

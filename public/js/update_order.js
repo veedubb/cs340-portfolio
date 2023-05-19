@@ -1,7 +1,7 @@
 let updateOrderForm = document.getElementById('update-order-form');
 
-updateOrderForm.addEventListener("submit", function(e) {
-    e.preventDefault();
+updateOrderForm.addEventListener("submit", function(f) {
+    f.preventDefault();
 
     let inputOrder = document.getElementById('update-order');
     let inputCustomer = document.getElementById('input-new-customer');
@@ -46,3 +46,4 @@ function updateRow(data, orderID){
         }
     }
 }
+

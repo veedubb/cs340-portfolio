@@ -41,9 +41,9 @@
 
         <input type="submit" value="Add Sales" />
     </form>
-    <h3>Update an Order:</h3>
+    <h3>Update the Customer on an Order:</h3>
     <form id="update-order-form">
-        <label for="update-order">Update Product:</label>
+        <label for="update-order">Update Customer:</label>
         <select name="update-order" id="update-order">
             {{#each data}}
             <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>
@@ -57,7 +57,25 @@
             {{/each}}
         </select>
 
-        <input type="submit" value="Update Product" />
+        <input type="submit" value="Update Customer" />
     </form>
     <script src="./js/update_order.js"></script>
+    
+    <h3>Update the Date an Order was placed:</h3>
+    <form id="update-date-form">
+    
+    <label for="input-order-date">Which Order?</label>
+    <select name="input-order-date" id="input-order-date">
+        {{#each data}}
+        <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-new-date">What is the actual date?</label>
+    <input type="date" name="input-new-date" id="input-new-date" required>
+
+    <input type="submit" value="Update Date">
+
+    </form>
+    <script src="./js/update_date.js"></script>
 </section>
