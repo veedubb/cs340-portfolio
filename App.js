@@ -276,14 +276,14 @@ app.post('/add-sales-details', function(req, res){
             )
             VALUES
             ('${data['input-order']}', '${data['input-product']}', ${data['input-qty']});`   
-            db.pool.query(query1, function(error, rows, fields){
-        if (error){
-            console.log(error);
-            res.sendStatus(400);
-        }
-        else {
-            res.redirect('/sales-details')
-        }
+        db.pool.query(query1, function(error, rows, fields){
+            if (error){
+                console.log(error);
+                res.sendStatus(400);
+            }
+            else {
+                res.redirect('/sales-details')
+            }
     })
 
 
@@ -293,11 +293,75 @@ app.post('/add-sales-details', function(req, res){
     POST SUPPLIERS PAGE
     Add a Supplier
 */
+app.post('/add-supplier', function(req, res){
+    let data = req.body
+    console.log(data)
+
+    if (!data['input-address2']){
+        data['input-address2'] = null
+    }
+    else {
+        let temp = data['input-address2']
+        data['input-address2'] = "'" + temp + "'"
+    }
+
+    let query1 =    `INSERT INTO Suppliers(
+                        name,
+                        phoneNumber,
+                        emailAddress,
+                        streetAddress,
+                        streetAddress2,
+                        city,
+                        state,
+                        zip
+                    )
+                    VALUES(
+                        '${data['input-name']}',
+                        ${data['input-phone']},
+                        '${data['input-email']}',
+                        '${data['input-address1']}',
+                        ${data['input-address2']},
+                        '${data['input-city']}',
+                        '${data['input-state']}',
+                        ${data['input-zip']}
+                    );`
+    db.pool.query(query1, function(error, rows, fields){
+        if (error){
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else {
+            res.redirect('/suppliers')
+        }
+    })
+})
 
 /*
     POST PRODUCT TYPES PAGE
     Add a Product Type
 */
+app.post('/add-product-type', function(req, res){
+    let data = req.body
+    console.log(data)
+
+    let query1 =    `INSERT INTO ProductTypes(
+                        typeName,
+                        typeDescription
+                    )
+                    VALUES(
+                        '${data['input-typeName']}',
+                        '${data['input-typeDesc']}'
+                    );`
+    db.pool.query(query1, function(error, rows, fields){
+        if (error){
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else {
+            res.redirect('/product-types')
+        }
+    })
+})
 
 /*
     DELETE SALES PAGE
