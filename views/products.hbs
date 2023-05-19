@@ -58,18 +58,4 @@
 
         <input type="submit" value="Add Product" />
     </form>
-    <h3>Update a Product:</h3>
-    <form id="update-product-form">
-        <label for="update-product">Update Product:</label>
-        <select name="update-product" id="update-product">
-            {{#each data}}
-            <option value="{{this.productID}}">{{this.productID}} - {{this.name}}</option>
-            {{/each}}
-        </select>
-
-        <label for="input-newPrice">New Sale Price:</label>
-        <input type="number" name="input-newPrice" id="input-newPrice" min="0" step=".01">
-
-        <input type="submit" value="Update Product" />
-    </form>
 </section>

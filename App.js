@@ -395,10 +395,39 @@ app.delete('/delete-sale', function(req, res, next){
 }) 
 
 /*
-    
-    Update a Product
+    PUT SALES PAGE
+    Update a Sale
 */
+app.put('/put-order', function(req, res, next){
+    let data = req.body;
+    console.log(data)
 
+    let order = data.order
+    let newCustomer = data.customer
+
+    let query1 = `UPDATE Sales SET customerID = ? WHERE Sales.orderID = ?`;
+    let selectCust = `SELECT * FROM Customers WHERE customerID = ?`;
+
+    db.pool.query(query1, [newCustomer, order], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400)
+        }
+        else{
+            db.pool.query(selectCust, [newCustomer], function(error, rows, fields){
+                if(error){
+                    console.log('Query 1 Successful.')
+                    console.log(error)
+                    res.sendStatus(400)
+                }
+                else{
+                    console.log('Query 2 successful.')
+                    res.send(rows)
+                }
+            })
+        }
+    })
+})
 
 /*
     LISTENER

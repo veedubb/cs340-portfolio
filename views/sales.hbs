@@ -41,4 +41,23 @@
 
         <input type="submit" value="Add Sales" />
     </form>
+    <h3>Update an Order:</h3>
+    <form id="update-order-form">
+        <label for="update-order">Update Product:</label>
+        <select name="update-order" id="update-order">
+            {{#each data}}
+            <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+        </select>
+
+        <label for="input-new-customer">Who does this order belong to?</label>
+        <select name="input-new-customer" id="input-new-customer">
+            {{#each people}}
+            <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+        </select>
+
+        <input type="submit" value="Update Product" />
+    </form>
+    <script src="./js/update_order.js"></script>
 </section>
