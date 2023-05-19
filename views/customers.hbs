@@ -33,33 +33,33 @@
     <h2>Add a New Customer</h2>
     <p>Enter the Customer Information below and hit submit to add a new Customer</p>
     </article>
-    <form class="customer-form" id="add-customer-form">
+    <form id="add-customer-form">
         <label for="input-fname">First Name:</label>
-        <input type="text" name="input-fname" id="input-fname" required>
+        <input class="fname" type="text" name="input-fname" id="input-fname" required placeholder="Emily">
 
         <label for="input-lname">Last Name:</label>
-        <input type="text" name="input-lname" id="input-lname" required>
+        <input class="lname" type="text" name="input-lname" id="input-lname" required placeholder="Dickinson">
 
         <label for="input-phone">Phone Number:</label>
-        <input type="number" name="input-phone" id="input-phone" min="1111111111" max="9999999999">
+        <input class="pnumber" type="number" name="input-phone" id="input-phone" min="1111111111" max="9999999999" placeholder="555-555-5555">
 
         <label for="input-address1">Street Address (Line 1):</label>
-        <input type="text" name="input-address1" id="input-address1" required>
+        <input class="street" type="text" name="input-address1" id="input-address1" required placeholder="1600 Penn Ave.">
 
         <label for="input-address2">Street Address (Line 2)</label>
-        <input type="text" name="input-address2" id="input-address2">
+        <input class="street" type="text" name="input-address2" id="input-address2" placeholder="West Wing">
         
         <label for="input-city">City:</label>
-        <input type="text" name="input-city" id="input-city" required>
+        <input class="city" type="text" name="input-city" id="input-city" required placeholder="Springfield">
         
         <label for="input-state">State:</label>
-        <input type="text" name="input-state" id="input-state" maxlength="2" required>
+        <input class="state" type="text" name="input-state" id="input-state" maxlength="2" required placeholder="OR">
 
         <label for="input-zip">ZIP Code:</label>
-        <input type="number" name="input-zip" id="input-zip" min="11111" max="99999"required>
+        <input class="zipcode" type="number" name="input-zip" id="input-zip" min="11111" max="99999"required placeholder="24588">
 
         <label for="input-email">Email Address:</label>
-        <input type="email" name="input-email" id="input-email">
+        <input class="email" type="email" name="input-email" id="input-email" placeholder="retro@aol.com">
 
         <input class="frm-button" type="submit" value="Add Customer" />
     </form>
