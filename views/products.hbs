@@ -3,7 +3,6 @@
     <table id="products-table">
         <thead>
             <tr>
-                <th></th>
                 {{#each data.[0]}}
                 <th>
                     {{@key}}
@@ -14,7 +13,6 @@
         <tbody>
             {{#each data}}
             <tr>
-                <td>Update</td>
                 <td>{{this.productID}}</td>
                 <td>{{this.name}}</td>
                 <td>${{this.storeCost}}</td>
@@ -32,10 +30,10 @@
         <input type="text" name="input-name" id="input-name" required>
 
         <label for="input-storeCost">Store Cost:</label>
-        <input type="number" name="input-storeCost" id="input-storeCost" step=".01" required>
+        <input type="number" name="input-storeCost" id="input-storeCost" min="0" step=".01" required>
 
         <label for="input-salePrice">Sale Price:</label>
-        <input type="number" name="input-salePrice" id="input-salePrice" step=".01" required>
+        <input type="number" name="input-salePrice" id="input-salePrice" min="0" step=".01" required>
 
         <label for="input-developer">Developer:</label>
         <input type="text" name="input-developer" id="input-developer" >
@@ -61,14 +59,17 @@
         <input type="submit" value="Add Product" />
     </form>
     <h3>Update a Product:</h3>
-    <form>
+    <form id="update-product-form">
         <label for="update-product">Update Product:</label>
         <select name="update-product" id="update-product">
-            <option value="Test">Test</option>
-
+            {{#each data}}
+            <option value="{{this.productID}}">{{this.productID}} - {{this.name}}</option>
+            {{/each}}
         </select>
 
+        <label for="input-newPrice">New Sale Price:</label>
+        <input type="number" name="input-newPrice" id="input-newPrice" min="0" step=".01">
+
         <input type="submit" value="Update Product" />
-    </form>
     </form>
 </section>
