@@ -6,9 +6,9 @@ const express   = require('express');
 const app       = express();
 const PORT      = 2666;
 const db        = require('./database/db-connector')
-// const { engine } = require('express-handlebars');
+const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');
-app.engine('.hbs', exphbs({extname: ".hbs",}));
+app.engine('.hbs', engine({extname: ".hbs",}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/scripts'));
