@@ -6,11 +6,12 @@ const express   = require('express');
 const app       = express();
 const PORT      = 2666;
 const db        = require('./database/db-connector')
-const { engine } = require('express-handlebars');
+// const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');
-app.engine('.hbs', engine({extname: ".hbs",}));
+app.engine('.hbs', exphbs({extname: ".hbs",}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/scripts'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
@@ -460,6 +461,7 @@ app.put('/update-date', function(req, res, next){
     })
 })
 
+
 /*
     LISTENER
 */
@@ -467,3 +469,14 @@ app.put('/update-date', function(req, res, next){
 app.listen(PORT, function() {
     console.log(`Express started on http://localhost:${PORT}; press Ctrl + C to terminate.`)
 });
+
+
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+    var x = document.getElementById("myNavbar");
+    if (x.className === "navbar") {
+      x.className += " responsive";
+    } else {
+      x.className = "navbar";
+    }
+  }
