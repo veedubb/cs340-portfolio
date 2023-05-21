@@ -42,7 +42,7 @@
   
   /*  ----- Page layout blocks -----  */
   header {
-    background-color: var(--purpledragondark);
+    background-color: var(--purpledragonlight);
     position: fixed;
     top: 0;
     left: 0;
@@ -59,22 +59,6 @@
     z-index: 999;
     transition: transform 0.3s ease;
     }
-  
-
-  header.mobile {
-    transform: translateY(-100%);
-  }
-
-  /* header * {
-    display: inline;}
-
-  header li {
-    margin: 20px;
-  }
-
-  .navhead {
-    margin-bottom: 5rem;
-  } */
 
 
   .logo {
@@ -172,14 +156,14 @@ header {
 
 /* Change the color of links on hover */
 .navbar a:hover {
-  background-color: var(--purpledragonlight);
-  color: var(--eggshell);
+  background-color: var(--eggshell);
+  color: var(--greenback);
+  border-radius: 15px;
 }
 
 /* Add an active class to highlight the current page */
-.navbar a.active {
-  background-color: var(--purpledragon);
-  color: var(--eggshell);
+.navbar li.active a { 
+  background-color: var(--purpledragonlight) !important;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -204,7 +188,8 @@ header {
 
   h2 {color:var(--greenback);
   margin-top: 3rem;
-  font-size: 3rem;}
+  font-size: 3rem;
+font-family: 'Lora', serif;}
   
   h3 {color:var(--purpledragonlight);
     margin-top: 3rem;
@@ -324,13 +309,13 @@ select {
   color: var(--charcoal);
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  padding-right: 40px;
-  padding-left: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 1rem;
+  padding: 1rem;
   border-radius: 15px;
+  overflow-wrap: break-word;
+  box-shadow:rgba(0, 0, 0, 0.06);
+  width: 90%;
+  border: none;
 
 }
 
@@ -343,7 +328,14 @@ select a {
   padding-left: 40px;
   border-radius: 15px;
   background-color: var(--greenback);
+  box-shadow:rgba(0, 0, 0, 0.06);
+  width: 90%;
+  border: none;
 
+}
+
+option {
+  text-overflow: ellipsis;
 }
 
 
@@ -466,6 +458,15 @@ input[type=submit] {
     float: none;
     display: block;
     text-align: left;
+  }
+
+  form {
+    max-width: 340px;
+  }
+
+  footer {
+    max-width: 400px;
+    text-align: center;
   }
   }
 

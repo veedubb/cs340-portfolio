@@ -28,19 +28,19 @@
     <h3>Add a New Product</h3>
     <form class="products-form" id="add-product-form" method="POST" action="/add-product">
         <label for="input-name">Name:</label>
-        <input type="text" name="input-name" id="input-name" required>
+        <input type="text" name="input-name" id="input-name" required placeholder="Tears of the Kingdom">
 
         <label for="input-storeCost">Store Cost:</label>
-        <input type="number" name="input-storeCost" id="input-storeCost" min="0" step=".01" required>
+        <input type="number" name="input-storeCost" id="input-storeCost" min="0" step=".01" required placeholder="30">
 
         <label for="input-salePrice">Sale Price:</label>
-        <input type="number" name="input-salePrice" id="input-salePrice" min="0" step=".01" required>
+        <input type="number" name="input-salePrice" id="input-salePrice" min="0" step=".01" required placeholder="70">
 
         <label for="input-developer">Developer:</label>
-        <input type="text" name="input-developer" id="input-developer" >
+        <input type="text" name="input-developer" id="input-developer" placeholder="Smart People">
 
         <label for="input-publisher">Publisher:</label>
-        <input type="text" name="input-publisher" id="input-publisher">
+        <input type="text" name="input-publisher" id="input-publisher" placeholder="Nintendo">
         
         <label for="input-productType">Product Type:</label>
         <select name="input-productType" id="input-productType">
@@ -48,7 +48,7 @@
             {{#each types}}
             <option value="{{this.productTypeID}}">{{this.typeName}}</option>
             {{/each}}
-        </select>
+        </select></br>
         
         <label for="input-supplier">Supplier:</label>
         <select name="input-supplier" id="input-supplier" required>
