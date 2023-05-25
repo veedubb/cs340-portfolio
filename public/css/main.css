@@ -336,42 +336,6 @@ input[type=submit] {
     width:100%;
     background-color: var(--eggshell);
   }
-  figcaption {
-    display:block;
-    padding:5px;
-    color:var(--eggplant);
-    background-color: var(--eggshell);
-  }
-  .gallery { 
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .gallery figure {
-    width: 320px;
-    margin:.75%;
-    padding:0;
-    border:1px solid var(--purpledragon);
-    background-color: var(--eggshell);
-  }
-  .gallery img {
-    width:100%;
-    background-color: var(--eggshell);
-  }
-  .gallery figcaption {
-    display:block;
-    padding:5px;
-    color:var(--eggplant);
-    background-color: var(--eggshell);
-  }
-
-  .image-gallery-description {
-    left: 30% !important;
-    bottom:0 !important;
-  } 
-  
-  /*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
-  
-
   
   /*   ===== TABLET  media query overrides mobile styles ===== */
   @media all and (max-width: 600px) 
