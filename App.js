@@ -11,6 +11,7 @@ const exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs",}));
 app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/scripts'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
@@ -463,6 +464,7 @@ app.put('/update-date', function(req, res, next){
         }
     })
 })
+
 
 /*
     LISTENER

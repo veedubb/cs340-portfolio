@@ -2,31 +2,35 @@
 
 <!DOCTYPE html>
 <html>
-<head>
     <meta charset="utf-8">
     <title>Real Nice Dragons</title>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/main.css'>
-    <script src='App.js' type="application/javascript"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{!-- <script src='/script.js' type="text/javascript"></script> --}}
 </head>
-<header class="'nav-head">
-    <img class="logo" src="logo/purple-transparent-bg.png" alt="Purple Dragon logo">
+<header class="nav-head">
+	<div class="background-img"></div>
+	<div class="logo-container">
+    <img class="logo" src="logo/circledragon.png" alt="Purple Dragon logo">
     <h1>Real Nice Dragons</h1>
-		<nav class="navbar">
-		<ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/customers">Customers</a></li>
-			<li><a href="/products">Products</a></li>
-			<li><a href="/suppliers">Suppliers</a></li>
-			<li><a href="/product-types">Product Types</a></li>
-			<li><a href="/sales">Sales</a></li>
-			<li><a href="/sales-details">Sales Details</a></li>
-		</ul>
-		</nav>
+	</div>
+		<div class="navbar" id="myNavbar">
+            <a href="/">Home</a>
+			<a href="/customers">Customers</a>
+			<a href="/products">Products</a>
+			<a href="/suppliers">Suppliers</a>
+			<a href="/product-types">Product Types</a>
+			<a href="/sales">Sales</a>
+			<a href="/sales-details">Sales Details</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  				<i class="fa fa-bars"></i>
+			</a>
+		</div>
 </header>
 <body>
 
     {{{body}}}
-
+<script src='/script.js' type="text/javascript"></script>
 </body>
-<footer>&copy;2023 Tyrell Verley and Megan Grant<img class="logo" src="logo/purple-transparent-bg.png" alt="Purple Dragon logo"></footer>
+<footer>&copy;2023 Tyrell Verley and Megan Grant</footer>
 </html>

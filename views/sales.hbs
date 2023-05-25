@@ -1,4 +1,5 @@
 <h2>Sales Page</h2>
+<h3>Sales Data</h3>
 <section>
     <table id="sales-table">
         <thead>
@@ -27,7 +28,7 @@
 
     <script src="./js/delete_sale.js"></script>
 
-    <h3>Add an Order:</h3>
+    <h3>Add an Order</h3>
     <form class="add-sales-form" id="add-sales-form" method="POST" action="/add-sales">
         <label for="input-date">Date:</label>
         <input type="date" name="input-date" id="input-date" required>
@@ -41,14 +42,14 @@
 
         <input type="submit" value="Add Sales" />
     </form>
-    <h3>Update the Customer on an Order:</h3>
+    <h3>Update the Customer on an Order</h3>
     <form id="update-order-form">
         <label for="update-order">Select an Order to Update:</label>
         <select name="update-order" id="update-order">
             {{#each data}}
             <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>
             {{/each}}
-        </select>
+        </select></br>
 
         <label for="input-new-customer">Who does this order belong to?</label>
         <select name="input-new-customer" id="input-new-customer">
@@ -61,7 +62,7 @@
     </form>
     <script src="./js/update_order.js"></script>
     
-    <h3>Update the Date an Order was placed:</h3>
+    <h3>Update the Date an Order was Placed</h3>
     <form id="update-date-form">
     
     <label for="input-order-date">Which Order?</label>
@@ -69,7 +70,7 @@
         {{#each data}}
         <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>
         {{/each}}
-    </select>
+    </select></br>
 
     <label for="input-new-date">What is the actual date?</label>
     <input type="date" name="input-new-date" id="input-new-date" required>

@@ -1,4 +1,5 @@
-<h2>Item Sales Page</h2>
+<h2>Sales Details Page</h2>
+<h3>Sales Details Data</h3>
 <section>
     <table id="sales-details-table">
         <thead>
@@ -32,17 +33,17 @@
             {{#each sales}}
             <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.lastName}}</option>
             {{/each}}
-        </select>
+        </select></br>
 
         <label for="input-product">Product:</label>
         <select name="input-product" id="input-product" required>
             {{#each products}}
             <option value="{{this.productID}}">{{this.name}}</option>
             {{/each}}
-        </select>
+        </select></br>
 
         <label for="input-qty">Quantity:</label>
-        <input type="number" name="input-qty" id="input-qty" required>
+        <input type="number" name="input-qty" id="input-qty" required placeholder="7">
 
         <input type="submit" value="Add Product" />
     </form>
