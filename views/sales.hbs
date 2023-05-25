@@ -43,7 +43,7 @@
     </form>
     <h3>Update the Customer on an Order:</h3>
     <form id="update-order-form">
-        <label for="update-order">Update Customer:</label>
+        <label for="update-order">Select an Order to Update:</label>
         <select name="update-order" id="update-order">
             {{#each data}}
             <option value="{{this.orderID}}">{{this.orderID}} - {{this.orderDate}} {{this.firstName}} {{this.lastName}}</option>

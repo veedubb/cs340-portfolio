@@ -148,10 +148,14 @@ app.post('/add-customer', function(req, res){
 
     if (!data.address2){
         data.address2 = null
+    } else {
+        data.address2 = "'" + data.address2 + "'"
     }
 
     if (!data.email){
         data.email = null
+    } else {
+        data.email = "'" + data.email + "'"
     }
 
     query1 =    `INSERT INTO Customers(
@@ -422,7 +426,7 @@ app.put('/put-order', function(req, res, next){
                 }
                 else{
                     console.log('Query 2 successful.')
-                    res.send(rows)
+                    res.redirect('/sales')
                 }
             })
         }
@@ -453,7 +457,7 @@ app.put('/update-date', function(req, res, next){
                 }
                 else{
                     console.log('Query 2 successful.')
-                    res.send(rows)
+                    res.redirect('/sales')
                 }
         })
         }
