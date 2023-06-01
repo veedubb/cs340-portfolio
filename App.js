@@ -225,10 +225,14 @@ app.post('/add-product', function(req, res){
     let data = req.body
     if (!data['input-developer']){
         data['input-developer'] = null
+    } else {
+        data['input-developer'] = "'" + data['input-developer'] + "'"
     }
 
     if (!data['input-publisher']){
         data['input-publisher'] = null
+    } else {
+        data['input-publisher'] = "'" + data['input-publisher'] + "'"
     }
 
     if(!data['input-productType']){
