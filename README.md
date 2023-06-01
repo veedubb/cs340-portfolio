@@ -42,4 +42,5 @@ Citing source code (Version 1.0)
 Source 7:
 osu-cs340-ecampus/nodejs-starter-app (May 2023)
 Citing source code (no version listed)
-George Kochera, Michael Curry, Danielle Safonte-->
+George Kochera, Michael Curry, Danielle Safonte
+https://github.com/osu-cs340-ecampus/nodejs-starter-app-->
