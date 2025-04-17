@@ -1,7 +1,5 @@
 # cs340-portfolio
-# All code is based on CS340 starter app code with the exception of: 
-# Original work
-# Citations
+This project represents a full stack project for a fictional video game store.
 <!-- 
 Source 1: 
 w3schools.com (May 2023) 
